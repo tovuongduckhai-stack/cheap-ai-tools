@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cheap AI Tools Directory</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XXXXXXX'); // Thay bằng Measurement ID của bạn
+  </script>
+</head>
+<body>
+  <h1>Cheap AI Tools Directory</h1>
+  <p>Find affordable/free AI APIs for side projects.</p>
+
+  <!-- Directory Table -->
+  <table>
+    <tr>
+      <th>Tool</th>
+      <th>Price</th>
+      <th>Link</th>
+    </tr>
+    <tr>
+      <td>OpenAI</td>
+      <td>Free tier + $5/mo</td>
+      <td><a href="https://openai.com" target="_blank" onclick="gtag('event','click_openai')">Visit</a></td>
+    </tr>
+    <tr>
+      <td>Claude</td>
+      <td>Free tier</td>
+      <td><a href="https://claude.ai" target="_blank" onclick="gtag('event','click_claude')">Visit</a></td>
+    </tr>
+    <tr>
+      <td>HuggingFace</td>
+      <td>Free models</td>
+      <td><a href="https://huggingface.co" target="_blank" onclick="gtag('event','click_hf')">Visit</a></td>
+    </tr>
+    <tr>
+      <td>Perplexity API</td>
+      <td>Free tier</td>
+      <td><a href="https://perplexity.ai" target="_blank" onclick="gtag('event','click_perplexity')">Visit</a></td>
+    </tr>
+  </table>
+
+  <!-- Pricing Section -->
+  <h2>Pricing</h2>
+  <div class="pricing">
+    <div class="plan">
+      <h3>Basic</h3>
+      <p>$5 / month</p>
+      <button onclick="showPopup('basic')">Buy Now</button>
+    </div>
+    <div class="plan">
+      <h3>Pro</h3>
+      <p>$10 / month</p>
+      <button onclick="showPopup('pro')">Buy Now</button>
+    </div>
+    <div class="plan">
+      <h3>Ultra</h3>
+      <p>$20 / month</p>
+      <button onclick="showPopup('ultra')">Buy Now</button>
+    </div>
+  </div>
+
+  <!-- Popup -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <h2>Thank you!</h2>
+      <p>You clicked Buy Now. This is a demo popup for testing market interest.</p>
+      <p><strong>The system will be updated later.</strong></p>
+    </div>
+  </div>
+
+  <script>
+    function showPopup(plan) {
+      document.getElementById("popup").style.display = "block";
+      gtag('event','buy_'+plan); // GA4 event
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+</body>
+</html>
