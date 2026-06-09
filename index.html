@@ -4,16 +4,6 @@
   <meta charset="UTF-8">
   <title>Cheap AI Tools Directory</title>
   <link rel="stylesheet" href="style.css">
-
-  <!-- Google Analytics (GA4) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8GRC8KQJ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-N8GRC8KQJ');
-  </script>
 </head>
 <body>
   <h1>Cheap AI Tools Directory</h1>
@@ -79,23 +69,23 @@
   </div>
 
   <script>
-    // Track link clicks
-    function trackLink(tool) {
-      gtag('event', 'click_tool', {
-        event_category: 'link',
-        event_label: tool
+    // Gửi event về backend để log JSON
+    async function sendEvent(eventName, payload) {
+      await fetch('/log', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ event: eventName, payload })
       });
+    }
+
+    function trackLink(tool) {
+      sendEvent('click_tool', { tool });
       console.log("Event sent: click_tool", tool);
     }
 
-    // Track Buy Now clicks
     function showPopup(plan) {
       document.getElementById("popup").style.display = "block";
-      gtag('event', 'purchase_click', {
-        event_category: 'engagement',
-        event_label: plan,
-        value: 1
-      });
+      sendEvent('purchase_click', { plan });
       console.log("Event sent: purchase_click", plan);
     }
 
