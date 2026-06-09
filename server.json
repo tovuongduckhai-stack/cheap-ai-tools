@@ -1,0 +1,27 @@
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
+
+const app = express();
+app.use(express.json());
+
+const filePath = path.join(__dirname, 'events.json');
+
+// API để log event
+app.post('/log', (req, res) => {
+  const data = {
+    event: req.body.event,
+    payload: req.body.payload,
+    time: new Date().toISOString()
+  };
+
+  fs.appendFileSync(filePath, JSON.stringify(data) + '\n');
+  res.json({ status: 'ok' });
+});
+
+// Serve static files (index.html, style.css)
+app.use(express.static(__dirname));
+
+app.listen(3000, () => {
+  console.log('Server running at http://localhost:3000');
+});
