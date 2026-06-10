@@ -71,7 +71,7 @@
   <script>
     // Gửi event về backend để log JSON
     async function sendEvent(eventName, payload) {
-      await fetch('/log', {
+     await fetch('/log.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ event: eventName, payload })
