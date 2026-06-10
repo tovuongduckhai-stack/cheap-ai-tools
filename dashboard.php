@@ -1,6 +1,12 @@
 <?php
 $db = new PDO('sqlite:' . __DIR__ . '/data.db');
-
+$db->exec("CREATE TABLE IF NOT EXISTS events (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    event TEXT,
+    payload TEXT,
+    ip TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)");
 // Tổng events
 $total = $db->query("SELECT COUNT(*) FROM events")->fetchColumn();
 
